@@ -1,6 +1,10 @@
+// import react from 'react';
+import Home from './components/Home/Home';
+import './app.scss';
+
 function App() {
   return (
-    <p> Hello World! 2</p>
+    <Home/>
   );
 }
 
