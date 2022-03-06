@@ -1,8 +1,8 @@
 import React from 'react';
 // import {AcUnit } from '@material-ui/icons';
 
-import Navbar from '../Navbar/Navbar';
-import Featured from '../featured/featured';
+import Navbar from '../../components/Navbar/Navbar';
+import Featured from '../../components/featured/featured';
 import './home.scss';
 
 export const Home = () => {
