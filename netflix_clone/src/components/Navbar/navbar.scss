@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-.navbar{
-
-    color : white;
-=======
 .navbar {
     width: 100%;
     color: white;
->>>>>>> 8e0b9ca41637e4d098049504ab3c8e13f2427cae
     font-size: 14px;
     position: fixed;
     top: 0;
@@ -37,45 +31,6 @@
           margin-right: 20px;
           cursor: pointer;
         }
-<<<<<<< HEAD
-
-        .right{
-            display:flex;
-            align-items: center;
-
-            .icon{
-                margin: 0 15px;
-                cursor: pointer;
-            }
-            img{
-                width: 30px;
-                height: 30px;
-                border-radius: 5px;
-                object-fit: cover;
-                cursor: pointer;
-            }
-
-            .profile{
-
-                .options{
-                    display: none;
-                    background-color: #141414;
-                    border-radius: 5px;
-                }
-                 
-                span{
-                    padding: 10px;
-                    cursor: pointer;
-                }
-
-                &:hover{
-                    .options{
-                    display:flex;
-                    flex-direction: column;
-                    position: absolute;
-                    }                
-                }  
-=======
       }
   
       .right {
@@ -112,7 +67,6 @@
               display: flex;
               flex-direction: column;
               position: absolute;
->>>>>>> 8e0b9ca41637e4d098049504ab3c8e13f2427cae
             }
           }
         }
