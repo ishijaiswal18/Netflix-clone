@@ -1,9 +1,20 @@
+import {useState} from 'react';
 import './navbar.scss';
 import {Search, Notifications, ArrowDropDown} from '@material-ui/icons';
 
+
 const Navbar = () => {
+
+    const [isScrolled, setIsScrolled] = useState(false);
+    console.log(isScrolled);
+
+    window.onscroll = () => {
+        setIsScrolled(window.pageYOffset > 0);
+        return () => (window.onscroll = null);
+    };
+
     return (
-        <div className='navbar'>
+        <div className= {isScrolled ? "navbar scrolled" : "navbar"}>
             <div className = 'container'>
                 <div className='left'>
                     <img src='https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' alt='Netflix' />
