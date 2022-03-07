@@ -3,6 +3,7 @@ import React from 'react';
 
 import Navbar from '../../components/Navbar/Navbar';
 import Featured from '../../components/featured/featured';
+import List from '../../components/List/List';
 import './home.scss';
 
 export const Home = () => {
@@ -10,7 +11,10 @@ export const Home = () => {
     <div className = "home">
       <Navbar />
       <Featured type = "movie"/>
-         
+      <List/>
+      <List/>
+      <List/>
+      <List/>
     </div>
   )
 }

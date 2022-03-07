@@ -5,8 +5,8 @@ import './app.scss';
 
 function App() {
   return (
-    // <Home/>
-    <Watch/>
+    <Home/>
+    // <Watch/>
   );
 }
 
