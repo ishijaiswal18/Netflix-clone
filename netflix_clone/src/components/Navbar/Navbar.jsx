@@ -21,15 +21,15 @@ const Navbar = () => {
                     <span> Homepage </span>
                     <span> Series </span>
                     <span> Movie </span>
-                    <span> new and Popular </span>
+                    <span> New and Popular </span>
                     <span> My List  </span>
                 </div>
                 <div className='right'>
                     <Search className = "icon" />
                     <span>KID</span>
                     <Notifications className = "icon" />
-                    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_icon_2.svg/1024px-User_icon_2.svg.png' alt='User' />
-                    <div className='profile'>
+                    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_icon_2.svg/1024px-User_icon_2.svg.png' alt='Users' />
+                    <div className="profile">
                         <ArrowDropDown className = "icon" />
                         <div className = "options">
                             <span>Settings</span>
