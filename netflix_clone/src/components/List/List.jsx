@@ -1,24 +1,36 @@
 import { ArrowBackIos, ArrowBackIosOutlined, ArrowForwardIosOutlined } from "@material-ui/icons"
 import ListItem from "../listItem/ListItem"
 import "./list.scss"
+import { useRef } from "react"
+import { useState } from "react"
 
 export default function List() {
-  // const listRef = useRef()
-  // const handleClick = (direction) =>
-  // {
-  //   let distance = listRef.current.getBoundingClientRect()
-  //   if(direction === "left")
-  //   {
-  //     listRef.current.style.transform = 'translateX(230ps)';
-  //   }
-  //   console.log(distance)
-  // }
+  const [isMoved, setIsMoved] = useState(false);
+  const [slideNumber, setSlideNumber] = useState(0);
+  const listRef = useRef();
+   const handleClick = (direction) =>{
+     setIsMoved(true)
+    let distance = listRef.current.getBoundingClientRect().x - 50;
+    if(direction === "left" && slideNumber>0){
+      setSlideNumber(slideNumber-1);
+        distance=distance+230  ;
+        listRef.current.style.transform = "translateX("+distance+"px)";
+    }
+    if(direction === "right" && slideNumber<5){
+      setSlideNumber(slideNumber+1);
+      distance=distance-230;  
+      listRef.current.style.transform = "translateX("+distance+"px)";
+  }
+    console.log(distance)
+  }
   return (
     <div className="list">
       <span className="listTitle">Continue to watch</span>
       <div className="wrapper">
-      <ArrowBackIosOutlined className="sliderArrow left"  />
-      <div className="container" >
+      <ArrowBackIosOutlined className="sliderArrow left" onClick={()=>handleClick("left")} style = {{display: !isMoved && "none"}} />
+      <div className="container" ref = {listRef}>
+        <ListItem/>
+        <ListItem/>
         <ListItem/>
         <ListItem/>
         <ListItem/>
@@ -29,7 +41,7 @@ export default function List() {
         <ListItem/>
 
       </div>
-      <ArrowForwardIosOutlined className="sliderArrow right" />
+      <ArrowForwardIosOutlined className="sliderArrow right" onClick={()=>handleClick("right")} />
 
       </div>
 
