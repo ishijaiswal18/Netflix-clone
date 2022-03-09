@@ -1,14 +1,44 @@
 import { InfoOutlined, PlayArrow} from '@material-ui/icons';
 import './featured.scss';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Featured = (props) => {
     let type = props.type;
+    const [content, setContent] = useState({});
+
+    useEffect(() => {
+        const getRandomContent = async () => {
+        try {
+            const res = await axios.get(`/movies/random?type=${type}`, {
+            headers: {
+                token:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjdiMzgzNWJjNDQxZGVkOGRmYjc1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NjgzMjkwOCwiZXhwIjoxNjQ3MjY0OTA4fQ.0sUggW73-6GS2zQFo905wgHWf1CTAyUKlaVzbbHMXPk",
+            },
+            });
+            setContent(res.data[0]);
+            // console.log("helloooooooooooooooo");
+            // console.log(res.data[0]);
+        } catch (err) {
+            console.log(err);
+        }
+        };
+        getRandomContent();
+    }, [type]);
+    // console.log(content);
+
+    const changeHandler = (e) => {
+        e.preventDefault();
+        console.log(e.target.value);
+        props.setGenre(e.target.value);
+    };
+
     return (
         <div className = "featured">
             {type && (
                 <div className = "category">
-                    <span>{type === 'movie' ? "Movies" : 'TV Series'}</span>
-                    <select name = "genre" id = 'genre'>
+                    <span>{type === 'movies' ? "Movies" : 'TV Series'}</span>
+                    <select name = "genre" id = 'genre' onChange = {changeHandler}>
                         <option value = "">All</option>
                         <option value = "action">Action</option>
                         <option value = "comedy">Comedy</option>
@@ -33,22 +63,19 @@ const Featured = (props) => {
                     </select>
                 </div>
             )}
-        
+            
             <img 
                 width = "100%"
-                src = "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+                src = {content.img}
                 alt = "" 
             />
             <div className = "info">
                 <img 
-                    src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
+                    src= "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
                     alt=""
                 />
                 <span className = "desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Iusto, quam consequatur dolores commodi repellendus quia sunt,
-                     itaque ullam amet distinctio neque excepturi adipisci, impedit 
-                     cumque vero. Dolores deserunt iure nisi. 
+                    {content.desc}
                 </span>
                 <div className="buttons">
                     <button className='play'>

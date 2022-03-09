@@ -1,12 +1,15 @@
-import {useState} from 'react';
+import { useContext, useState } from "react";
 import './navbar.scss';
 import {Search, Notifications, ArrowDropDown} from '@material-ui/icons';
-
+import {Link} from 'react-router-dom';
+import { AuthContext } from "../../authContext/AuthContext";
+import { logout } from "../../authContext/AuthActions";
 
 const Navbar = () => {
 
     const [isScrolled, setIsScrolled] = useState(false);
-    console.log(isScrolled);
+    // console.log(isScrolled);
+    const {dispatch} = useContext(AuthContext);
 
     window.onscroll = () => {
         setIsScrolled(window.pageYOffset > 0);
@@ -18,9 +21,15 @@ const Navbar = () => {
             <div className = 'container'>
                 <div className='left'>
                     <img src='https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' alt='Netflix' />
-                    <span> Homepage </span>
-                    <span> Series </span>
-                    <span> Movie </span>
+                    <Link to='/' className='link'>
+                        <span> Homepage </span>
+                    </Link>
+                    <Link to = '/series' className='link'>
+                        <span> Series </span>
+                    </Link>
+                    <Link to = '/movies' className='link'>
+                        <span> Movie </span>
+                    </Link>
                     <span> New and Popular </span>
                     <span> My List  </span>
                 </div>
@@ -33,7 +42,7 @@ const Navbar = () => {
                         <ArrowDropDown className = "icon" />
                         <div className = "options">
                             <span>Settings</span>
-                            <span>Logout</span>
+                            <span onClick ={() => dispatch(logout()) }>Logout</span>
                         </div>
                     </div>
                 </div>
