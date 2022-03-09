@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const authRoute = require("./Routes/auth");
 const userRoute = require("./Routes/users");
+const movieRoute = require("./Routes/movie");
+const listRoute = require("./Routes/lists");
 
 dotenv.config();
 // app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,6 +22,8 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use('/api/users', userRoute);
+app.use('/api/movies', movieRoute);
+app.use('/api/lists', listRoute);
 
 app.listen(8800, () => {
     console.log("Server started on port 8800");
