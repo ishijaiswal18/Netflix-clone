@@ -4,6 +4,7 @@ import {Search, Notifications, ArrowDropDown} from '@material-ui/icons';
 import {Link} from 'react-router-dom';
 import { AuthContext } from "../../authContext/AuthContext";
 import { logout } from "../../authContext/AuthActions";
+import {useNavigate} from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -15,6 +16,8 @@ const Navbar = () => {
         setIsScrolled(window.pageYOffset > 0);
         return () => (window.onscroll = null);
     };
+
+    const navigate = useNavigate();
 
     return (
         <div className= {isScrolled ? "navbar scrolled" : "navbar"}>
@@ -42,7 +45,7 @@ const Navbar = () => {
                         <ArrowDropDown className = "icon" />
                         <div className = "options">
                             <span>Settings</span>
-                            <span onClick ={() => dispatch(logout()) }>Logout</span>
+                            <span onClick ={() => {dispatch(logout()); navigate('/register')} }>Logout</span>
                         </div>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ const Featured = (props) => {
         <div className = "featured">
             {type && (
                 <div className = "category">
-                    <span>{type === 'movies' ? "Movies" : 'TV Series'}</span>
+                    <span>{type === 'movie' ? "Movies" : 'TV Series'}</span>
                     <select name = "genre" id = 'genre' onChange = {changeHandler}>
                         <option value = "">All</option>
                         <option value = "action">Action</option>

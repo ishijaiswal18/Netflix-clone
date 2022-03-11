@@ -10,7 +10,6 @@ export const loginStart = () => ({
   });
   
   //logout
-  
   export const logout = () => ({
     type: "LOGOUT",
   });
