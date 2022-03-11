@@ -11,6 +11,7 @@ router.post("/", verify, async (req, res) => {
     if (req.user.isAdmin) {
       const newMovie = new Movie(req.body);
       const isSeries = req.body.isSeries;
+      console.log(req.body);
       try{
           console.log("a");
         const savedMovie = await newMovie.save();
@@ -30,7 +31,7 @@ router.post("/", verify, async (req, res) => {
         else{
             // console.log("gbjdsn ");
             const newList = new List({
-                title: req.body.genre,
+                title: isSeries ? "Series" : "Movies" + " " + req.body.genre,
                 type: isSeries ? "series" : "movie",
                 genre: req.body.genre,
                 content: [savedMovie]

@@ -8,7 +8,6 @@ export default function List({list}) {
   console.log("hello");
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
-  const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
   const listRef = useRef();
 
    const handleClick = (direction) =>{
@@ -16,15 +15,16 @@ export default function List({list}) {
     let distance = listRef.current.getBoundingClientRect().x - 50;
 
     if(direction === "left" && slideNumber>0){
-      setSlideNumber(slideNumber-1);
+        // Decrease the value of slideNumber by 1
+        setSlideNumber((slideNumber) => slideNumber - 1);
         distance=distance+230  ;
         listRef.current.style.transform = "translateX("+distance+"px)";
     }
 
-    if(direction === "right" && slideNumber< 10 - clickLimit){
-      setSlideNumber(slideNumber+1);
+    if(direction === "right" && slideNumber< 10){
+      setSlideNumber((slideNumber) => slideNumber + 1);
       distance=distance-230;  
-      listRef.current.style.transform = "translateX("-230 +distance+"px)";
+      listRef.current.style.transform = "translateX(" +distance+"px)";
   }
   }
   console.log("hello");

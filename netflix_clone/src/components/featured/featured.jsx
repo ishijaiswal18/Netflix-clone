@@ -13,7 +13,7 @@ const Featured = (props) => {
             const res = await axios.get(`/movies/random?type=${type}`, {
             headers: {
                 token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjdiMzgzNWJjNDQxZGVkOGRmYjc1NyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NjgzMjkwOCwiZXhwIjoxNjQ3MjY0OTA4fQ.0sUggW73-6GS2zQFo905wgHWf1CTAyUKlaVzbbHMXPk",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmFlNmY2ZTU0YTJmYTBjZjk3NmEwNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0Njk3OTUzOCwiZXhwIjoxNjQ3NDExNTM4fQ.SU_PcTHzueZUPw4uh5nouI9_1YZGjSAVXRAByGwV6bk",
             },
             });
             setContent(res.data[0]);
@@ -71,8 +71,8 @@ const Featured = (props) => {
             />
             <div className = "info">
                 <img 
-                    src= "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-                    alt=""
+                    src= "https://www.citypng.com/public/uploads/preview/no-way-home-spider-man-white-logo-11641394492ark1pf5b62.png"
+                    alt="Movie"
                 />
                 <span className = "desc">
                     {content.desc}
